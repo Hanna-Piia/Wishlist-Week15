@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const filPath =path.join(path.dirname(require.main.filename), 'data', 'wishes.json');
+
+
+const filePath = path.join(path.dirname(require.main.filename), 'data', 'wishes.json');
 
 module.exports = class Wish {
 
@@ -9,7 +11,7 @@ module.exports = class Wish {
     }
 
     saveWish() {
-        fs.readFile(filePath, (error, fileContent) => {
+        fs.readFile(filePath, (error, fileContent) =>{
             let wishes = [];
 
             if(!error){
@@ -20,7 +22,7 @@ module.exports = class Wish {
 
             wishes.push(this);
 
-            fs.writeFile(filePath, JSON.stringify(wishes), (error) => {
+            fs.writeFile(filePath, JSON.stringify(wishes), (error) =>{
 
                 if(!error) {
                     console.log('wish saved');
@@ -34,7 +36,7 @@ module.exports = class Wish {
     }
 
 
-    static fetchAllWishes(callBack){
+    static fetchAllWishes (callBack){
         fs.readFile(filePath, (error, fileContent) => {
             if(error){
                 callBack([]);
